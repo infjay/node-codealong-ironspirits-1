@@ -33,11 +33,13 @@ app.get("/limoncello", (req, res, next) => {
     const data = {
         title: "Limoncello",
         price: 20,
-        imageFile: "product-limoncello.png"
+        imageFile: "product-limoncello.png",
+        stores: ["Online", "Albacete", "Freiburg", "Amsterdam"]
     }
 
     res.render("product", data);
 });
+
 
 app.get("/whisky", (req, res, next) => {
 
@@ -50,12 +52,12 @@ app.get("/whisky", (req, res, next) => {
     res.render("product", data);
 });
 
+
 app.get("/tequila", (req, res, next) => {
 
     const data = {
         title: "Tequila Don Julio",
         price: 35,
-        imageFile: "tequila-don-julio.jpg"
     }
 
     res.render("product", data);

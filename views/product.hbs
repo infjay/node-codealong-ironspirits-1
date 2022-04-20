@@ -29,11 +29,37 @@
     </header>
 
 
-    <h1>Product: {{title}}</h1>
+    <article class="product">
+        <h1>Product: {{title}}</h1>
 
-    <h2>Price: {{price}}€</h2>
+        <h2>Price: {{price}}€</h2>
 
-    <img src="/images/{{imageFile}}" alt="{{title}}" />
+        {{#if imageFile}}
+        <img src="/images/{{imageFile}}" alt="{{title}}" />
+        {{else}}
+        <img src="https://via.placeholder.com/600x400" alt="{{title}}" />
+        {{/if}}
+
+        <section>
+
+            {{#if stores}}
+            <h5>This product is available in the following stores:</h5>
+
+            <ul>
+                {{#each stores}}
+                <li>
+                    {{this}}
+                    <a href="#">More Details</a>
+                </li>
+                {{/each}}
+            </ul>
+            {{else}}
+            <h5>Product currently not available.</h5>
+            {{/if}}
+
+        </section>
+    </article>
+
 
 </body>
 
