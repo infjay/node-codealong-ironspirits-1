@@ -1,7 +1,19 @@
 const express = require('express');
 const app = express();
 
+app.set("views", __dirname + "/views");
+app.set("view engine", "hbs");
+
 app.use(express.static('public'));
+
+
+
+
+/* Routes */
+
+app.get("/", (req, res, next)=>{
+    res.sendFile(__dirname + '/views/home.html');
+});
 
 
 app.get("/about", (req, res, next) => {
@@ -12,6 +24,47 @@ app.get("/about", (req, res, next) => {
 app.get("/contact", (req, res, next) => {
     res.sendFile(__dirname + '/views/contact.html');
 });
+
+
+
+
+app.get("/limoncello", (req, res, next) => {
+
+    const data = {
+        title: "Limoncello",
+        price: 20,
+        imageFile: "product-limoncello.png"
+    }
+
+    res.render("product", data);
+});
+
+app.get("/whisky", (req, res, next) => {
+
+    const data = {
+        title: "Single Malt Whisky Yamakazi",
+        price: 105,
+        imageFile: "whisky-yamazaki.jpg"
+    }
+
+    res.render("product", data);
+});
+
+app.get("/tequila", (req, res, next) => {
+
+    const data = {
+        title: "Tequila Don Julio",
+        price: 35,
+        imageFile: "tequila-don-julio.jpg"
+    }
+
+    res.render("product", data);
+});
+
+
+
+
+
 
 
 app.listen(3001, () => {
